@@ -4,7 +4,6 @@ from classes.many_to_many import Player
 from classes.many_to_many import Game
 from classes.many_to_many import Result
 
-
 class TestGame:
     """Game in many_to_many.py"""
 
@@ -21,13 +20,9 @@ class TestGame:
         game = Game("Skribbl.io")
         assert isinstance(game.title, str)
 
-        # comment out the next two lines if using Exceptions
-        game.title = 2
-        assert game.title == "Skribbl.io"
-
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     game.title = "not Skribbl.io"
+        # Uncomment the next two lines if using Exceptions
+        with pytest.raises(Exception):
+            game.title = "not Skribbl.io"
 
     def test_title_len(self):
         """title is greater than 0 characters"""
@@ -36,9 +31,9 @@ class TestGame:
         assert hasattr(game, "title")
         assert len(game.title) > 0
 
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Game("")
+        # Uncomment the next two lines if using Exceptions
+        with pytest.raises(Exception):
+            Game("")
 
     def test_has_many_results(self):
         """game has many results"""
@@ -96,7 +91,7 @@ class TestGame:
         player = Player("Nick")
         player_2 = Player("Ari")
         Result(player, game, 5000)
-        Result(player, game, 5002)
+        Result(player, game, 5000)
         Result(player_2, game, 4999)
 
         assert len(set(game.players())) == len(game.players())

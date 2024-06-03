@@ -21,36 +21,23 @@ class TestPlayer:
         player.username = "ActuallyTopher"
         assert player.username == "ActuallyTopher"
 
-        # comment out the next two lines if using Exceptions
-        player.username = 2
-        assert player.username == "ActuallyTopher"
+        # Uncomment the next two lines if using Exceptions
+        with pytest.raises(Exception):
+            player.username = 2
 
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     player.username = 2
-
-    def test_title_len(self):
+    def test_username_len(self):
         """username is between characters 2 and 16 characters long"""
         player = Player("Saaammmm")
 
         assert hasattr(player, "username")
         assert 2 <= len(player.username) <= 16
 
-        # comment out the next two lines if using Exceptions
-        player.username = "y"
-        assert player.username == "Saaammmm"
+        # Uncomment the next two lines if using Exceptions
+        with pytest.raises(Exception):
+            player.username = "y"
 
-        # comment out the next two lines if using Exceptions
-        player.username = "this_username_is_too_long"
-        assert player.username == "Saaammmm"
-
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Player("y")
-
-        # uncomment the next two lines if using Exceptions
-        # with pytest.raises(Exception):
-        #     Player("this_username_is_too_long")
+        with pytest.raises(Exception):
+            player.username = "this_username_is_too_long"
 
     def test_has_many_results(self):
         """player has many results"""
